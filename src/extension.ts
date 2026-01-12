@@ -95,9 +95,6 @@ async function startLanguageClient(context: vscode.ExtensionContext): Promise<La
 			configurationSection: 'php-cs-fixer-lsp',
 			// fileEvents: vscode.workspace.createFileSystemWatcher('**/*.php')
 		},
-		initializationOptions: {
-			formattingOnly: true
-		},
 		outputChannel: outputChannel,
 		revealOutputChannelOn: RevealOutputChannelOn.Never,
 		middleware: {
