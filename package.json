@@ -4,6 +4,7 @@
   "description": "Make PHP-CS-Fixer faster by keep it running in background",
   "version": "0.1.0",
   "license": "MPL-2.0",
+  "publisher": "balthild",
   "repository": {
     "type": "git",
     "url": "https://github.com/balthild/php-cs-fixer-lsp-vscode"
