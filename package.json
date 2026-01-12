@@ -1,0 +1,79 @@
+{
+  "name": "php-cs-fixer-lsp",
+  "displayName": "php-cs-fixer-lsp",
+  "description": "Make PHP-CS-Fixer faster by keep it running in background",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.61.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:php"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "php-cs-fixer-lsp.downloadServer",
+        "title": "php-cs-fixer-lsp: Download Server"
+      },
+      {
+        "command": "php-cs-fixer-lsp.restartServer",
+        "title": "php-cs-fixer-lsp: Restart Server"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "PHP CS Fixer Language Server",
+      "properties": {
+        "php-cs-fixer-lsp.logLevel": {
+          "type": "string",
+          "default": "info",
+          "description": "Log level for the language server.",
+          "enum": [
+            "debug",
+            "info",
+            "warning",
+            "error"
+          ]
+        },
+        "php-cs-fixer-lsp.serverExec": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the language server executable. Leave empty to auto-download the latest release."
+        },
+        "php-cs-fixer-lsp.serverArgs": {
+          "type": "array",
+          "default": [],
+          "description": "Additional arguments to pass to the language server",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.108.1",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.52.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  }
+}
