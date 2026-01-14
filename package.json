@@ -2,7 +2,7 @@
   "name": "php-cs-fixer-lsp",
   "displayName": "php-cs-fixer-lsp",
   "description": "Make PHP-CS-Fixer faster by keep it running in background",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MPL-2.0",
   "publisher": "balthild",
   "repository": {
@@ -67,7 +67,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
