@@ -45,7 +45,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				if (client) {
 					restarting = true;
 					try {
-						await client.stop();
+						await client.stop(1000);
 					} catch (err) {
 						console.log('php-cs-fixer-lsp stop info:', err);
 					}
@@ -73,7 +73,7 @@ export function deactivate(): Thenable<void> | undefined {
 	if (!client) {
 		return undefined;
 	}
-	return client.stop();
+	return client.stop(1000);
 }
 
 async function startLanguageClient(context: vscode.ExtensionContext): Promise<LanguageClient> {
