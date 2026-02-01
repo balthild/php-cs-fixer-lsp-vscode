@@ -1,4 +1,3 @@
-import { rm } from 'node:fs/promises';
 import { builtinModules } from 'node:module';
 
 import commonjs from '@rollup/plugin-commonjs';
@@ -13,7 +12,7 @@ export default defineConfig((args) => ({
     dir: './dist',
     format: 'commonjs',
     indent: '\t',
-    sourcemap: true,
+    sourcemap: args.watch,
     entryFileNames: '[name].js',
     chunkFileNames: '[name].js',
     manualChunks(id) {
@@ -51,9 +50,6 @@ function dist() {
       if (chunk.name === 'vendor') {
         return await minifier.renderChunk(code, chunk, options, meta);
       }
-    },
-    async writeBundle() {
-      await rm('./dist/vendor.js.map', { force: true });
     },
   };
 }
