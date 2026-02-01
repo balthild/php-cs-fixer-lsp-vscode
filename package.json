@@ -2,7 +2,7 @@
   "name": "php-cs-fixer-lsp",
   "displayName": "php-cs-fixer-lsp",
   "description": "Make PHP-CS-Fixer faster by keep it running in background",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "license": "MPL-2.0",
   "publisher": "balthild",
   "repository": {
