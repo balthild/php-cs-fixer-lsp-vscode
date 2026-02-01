@@ -2,6 +2,7 @@
   "includes": [
     "package.json",
     "tsconfig.json",
+    "rollup.config.mjs",
     "eslint.config.mjs",
     ".vscode-test.mjs",
     "src/**/*.{js,ts}",

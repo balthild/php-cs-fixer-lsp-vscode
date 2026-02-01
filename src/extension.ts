@@ -11,7 +11,7 @@ import {
   TransportKind,
 } from 'vscode-languageclient/node';
 
-import { download, errorText, fetchJson, fetchLatestReleaseAsset, fileExists, readJson } from './utils';
+import { download, errorText, fetchLatestReleaseAsset, fileExists, readJson } from './utils';
 
 let extension: PhpCsFixerExtension;
 
