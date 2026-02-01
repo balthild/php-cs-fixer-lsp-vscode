@@ -1,11 +1,11 @@
 {
-	"compilerOptions": {
-		"module": "node16",
-		"target": "es2022",
-		"outDir": "out",
-		"lib": ["es2022"],
-		"sourceMap": true,
-		"rootDir": "src",
-		"strict": true,
-	}
+  "compilerOptions": {
+    "module": "node16",
+    "target": "es2022",
+    "outDir": "out",
+    "lib": ["es2022"],
+    "sourceMap": true,
+    "rootDir": "src",
+    "strict": true
+  }
 }

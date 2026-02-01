@@ -1,0 +1,27 @@
+{
+  "includes": [
+    "package.json",
+    "tsconfig.json",
+    "eslint.config.mjs",
+    ".vscode-test.mjs",
+    "src/**/*.{js,ts}",
+  ],
+  "excludes": [
+    "**/node_modules",
+  ],
+  "json": {},
+  "typescript": {
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "semiColons": "always",
+    "quoteStyle": "preferSingle",
+    "quoteProps": "consistent",
+    "trailingCommas": "onlyMultiLine",
+    "arrowFunction.useParentheses": "force",
+    "functionExpression.spaceBeforeParentheses": true,
+  },
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.95.13.wasm",
+    "https://plugins.dprint.dev/json-0.21.1.wasm",
+  ]
+}
