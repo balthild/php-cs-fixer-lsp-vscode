@@ -1,5 +1,6 @@
 {
   "includes": [
+    "dprint.json",
     "package.json",
     "tsconfig.json",
     "rollup.config.mjs",

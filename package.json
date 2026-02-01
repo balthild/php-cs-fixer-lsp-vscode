@@ -86,6 +86,7 @@
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.7.1",
+    "dprint": "^0.51.1",
     "eslint": "^9.39.2",
     "release-it": "^19.2.4",
     "rollup": "^4.57.1",

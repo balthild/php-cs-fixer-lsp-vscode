@@ -4,6 +4,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import { exec, spawn } from 'node:child_process';
+import { promisify } from 'node:util';
 import { defineConfig } from 'rollup';
 
 export default defineConfig((args) => ({
@@ -11,7 +13,6 @@ export default defineConfig((args) => ({
   output: {
     dir: './dist',
     format: 'commonjs',
-    indent: '\t',
     sourcemap: args.watch,
     entryFileNames: '[name].js',
     chunkFileNames: '[name].js',
@@ -33,6 +34,7 @@ export default defineConfig((args) => ({
         outDir: './dist',
         module: 'esnext',
         moduleResolution: 'bundler',
+        sourceMap: args.watch,
       },
     }),
   ],
@@ -49,6 +51,16 @@ function dist() {
     async renderChunk(code, chunk, options, meta) {
       if (chunk.name === 'vendor') {
         return await minifier.renderChunk(code, chunk, options, meta);
+      } else {
+        const child = spawn('dprint', ['fmt', '--stdin', 'js']);
+        child.stdin.end(code);
+
+        let formatted = '';
+        for await (const chunk of child.stdout) {
+          formatted += chunk;
+        }
+
+        return formatted;
       }
     },
   };
