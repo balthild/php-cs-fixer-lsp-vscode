@@ -5,6 +5,3 @@ push = true
 
 [npm]
 publish = false
-
-[hooks]
-"after:release" = "vsce publish --azure-credential"
