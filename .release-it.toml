@@ -7,4 +7,4 @@ push = true
 publish = false
 
 [hooks]
-"after:release" = "vsce publish"
+"after:release" = "vsce publish --azure-credential"
