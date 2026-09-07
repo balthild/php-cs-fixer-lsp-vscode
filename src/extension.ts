@@ -54,15 +54,12 @@ class PhpCsFixerExtension {
 
   private async startServer() {
     try {
-      const verbosity: Record<string, string[] | undefined> = {
-        emergency: ['--quiet'],
-        alert: ['--quiet'],
-        critical: ['--quiet'],
-        error: ['--quiet'],
-        warning: [],
-        notice: [],
-        info: [],
-        debug: ['-vvv'],
+      // https://symfony.com/doc/current/console/verbosity.html
+      const verbosity: Record<string, number> = {
+        error: -1,
+        warning: 0,
+        info: 1,
+        debug: 3,
       };
 
       const config = this.getExtensionConfig();
@@ -72,8 +69,13 @@ class PhpCsFixerExtension {
 
       const serverOptions: ServerOptions = {
         command: serverExec,
-        args: ['server', ...verbosity[logLevel] ?? [], ...serverArgs],
+        args: ['server', ...serverArgs],
         transport: TransportKind.stdio,
+        options: {
+          env: {
+            SHELL_VERBOSITY: verbosity[logLevel] ?? 0,
+          },
+        },
       };
 
       const clientOptions: LanguageClientOptions = {
