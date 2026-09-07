@@ -54,13 +54,25 @@ class PhpCsFixerExtension {
 
   private async startServer() {
     try {
+      const verbosity: Record<string, string[] | undefined> = {
+        emergency: ['--quiet'],
+        alert: ['--quiet'],
+        critical: ['--quiet'],
+        error: ['--quiet'],
+        warning: [],
+        notice: [],
+        info: [],
+        debug: ['-vvv'],
+      };
+
       const config = this.getExtensionConfig();
+      const logLevel = config.get<string>('logLevel', 'error');
       const serverArgs = config.get<string[]>('serverArgs', []);
       const serverExec = await this.resolveServerExec(config);
 
       const serverOptions: ServerOptions = {
         command: serverExec,
-        args: ['server', ...serverArgs],
+        args: ['server', ...verbosity[logLevel] ?? [], ...serverArgs],
         transport: TransportKind.stdio,
       };
 
@@ -109,12 +121,11 @@ class PhpCsFixerExtension {
 
   private async stopServer() {
     try {
-      await this.client?.stop(1000);
+      await this.client?.dispose(1000);
     } catch (error) {
       this.output.appendLine('server stop failed');
       this.output.appendLine(errorText(error));
     }
-    await this.client?.dispose();
   }
 
   private async restartServer() {
