@@ -73,7 +73,8 @@ class PhpCsFixerExtension {
         transport: TransportKind.stdio,
         options: {
           env: {
-            SHELL_VERBOSITY: verbosity[logLevel] ?? 0,
+            ...process.env,
+            SHELL_VERBOSITY: String(verbosity[logLevel] ?? 0),
           },
         },
       };
