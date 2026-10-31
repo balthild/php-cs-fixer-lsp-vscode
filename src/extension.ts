@@ -122,6 +122,11 @@ class PhpCsFixerExtension {
   }
 
   private async stopServer() {
+    if (!this.client?.isRunning()) {
+      this.output.appendLine('server already stopped');
+      return;
+    }
+
     try {
       await this.client?.dispose(1000);
     } catch (error) {
